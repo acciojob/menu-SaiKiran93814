@@ -3,10 +3,14 @@ import React from 'react';
 const Menu = ({ items }) => {
   return (
     <div className="section-center">
-      {items.map((menuItem,index) => {
-        const { id, title, img, desc, price } = menuItem;
+      {items.map((menuItem) => {
+        const { id, title, img, desc, price, category } = menuItem;
         return (
-          <article key={id} id={`menu-item-${menuItem.category}`} className="menu-item">
+          <article
+            key={id}
+            className="menu-item"
+            data-test-id={`menu-item-${category.toLowerCase()}`} // ✅ Required for Cypress
+          >
             <img src={img} alt={title} className="photo" />
             <div className="item-info">
               <header>
